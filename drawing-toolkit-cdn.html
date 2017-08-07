@@ -1,0 +1,40 @@
+<link rel="import" href="//cdn.rawgit.com/download/polymer-cdn/2.0.1/lib/polymer/polymer.html">
+<link rel="import" href="grapheditor.html">
+
+<script>
+  /**
+     * `drawing-toolkit`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+  class DrawingToolkit extends Polymer.Element {
+    static get is() { return 'drawing-toolkit'; }
+    static get properties() {
+      return {
+        width: {
+          type: String,
+          value: '100%'
+        },
+        height: {
+          type: String,
+          value: '100%'
+        }
+      };
+    }
+    constructor() {
+      super();
+      this.style.display = "block";
+      this.style.position = "relative";
+    }
+    connectedCallback() {
+      super.connectedCallback();
+      this.style.width = this.width;
+      this.style.height = this.height;
+      instantiateEditor(this);
+    }
+  }
+  window.customElements.define(DrawingToolkit.is, DrawingToolkit);
+</script>
